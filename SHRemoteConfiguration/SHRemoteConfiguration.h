@@ -12,7 +12,7 @@
 
 + (SHRemoteConfiguration *)sharedRemoteConfiguration;
 
-- (void)loadConfiguration:(NSURL *)configurationUrl withDefaults:(NSString *)localFilePath;
+- (void)loadConfiguration:(NSString *)configurationUrl withDefaults:(NSString *)localFilePath;
 
 - (BOOL)isAllowedForPermissionName:(NSString *)permisionName;
 

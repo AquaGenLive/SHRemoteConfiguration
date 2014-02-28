@@ -48,11 +48,16 @@
 }
 
 - (void) testLoadConfigurationFromDefaults {
-
+//    [config loadConfiguration:nil withDefaults:[[NSBundle bundleForClass:[self class]] pathForResource:@"testDefaults" ofType:@"json"]];
 }
 
 - (void) testLoadConfigurationFromRemote {
-
+    // TODO improve test with mocks
+    [config loadConfiguration:@"http://aquagen.info/testDefaults.json" withDefaults:nil];
+    [NSThread sleepForTimeInterval:5.0];
+    XCTAssertTrue([config isAllowedForPermissionName:@"isAllowed"]);
+    XCTAssertFalse([config isAllowedForPermissionName:@"isNotAllowed"]);
+    XCTAssertEqualObjects([config getStringForPermissionName:@"testString"], @"TestString");
 }
 
 - (void) testLoadConfigurationFromCache {
